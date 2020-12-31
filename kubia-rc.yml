@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: kubia-rc
+  name: kubia
+  namespace: default
   labels:
     run: kubia
 spec:
@@ -14,9 +15,12 @@ spec:
         run: kubia
     spec:
       containers:
-      - name: kubia-container
-        image: rimmon1971/kubia:latest
+      - name: kubia
+        image: registry.fsimonetti.info/rimmon1971/kubia:0.1
         ports:
         - containerPort: 8080
           protocol: TCP
+      - name: sak
+        image: registry.fsimonetti.info/leodotcloud/swiss-army-knife
+
       
